@@ -1,0 +1,23 @@
+{
+    "name": "spiewajacestudio.pl",
+    "version": "1.0.0",
+    "description": "Website for Śpiewające Studio",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm run compile:sass | live-server src/",
+        "compile:sass": "node-sass src/sass/main.scss src/css/style.css -w"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jurek2006/spiewajacestudio.pl.git"
+    },
+    "author": "Jurek Skowron",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jurek2006/spiewajacestudio.pl/issues"
+    },
+    "homepage": "https://github.com/jurek2006/spiewajacestudio.pl#readme",
+    "devDependencies": {
+        "node-sass": "^4.12.0"
+    }
+}
