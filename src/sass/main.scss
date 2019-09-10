@@ -1,6 +1,13 @@
-$color-main: #d60b52;
-$color-second: #ffffff;
-$color-third: #0a0a0a;
+:root {
+    --color-main: #d60b52;
+    --color-second: #ffffff;
+    --color-third: #0a0a0a;
+
+    --slant-horiz-param: 2.5rem;
+    --negative-slant-horiz-param: calc(var(--slant-horiz-param) * -1);
+}
+
+// ------------------------------------------------------------------------------------------
 
 *,
 *::after,
@@ -18,11 +25,13 @@ body {
     box-sizing: border-box;
     font-size: 1.6rem;
     font-family: 'Baloo', cursive;
+    color: var(--color-second);
 }
 
 h1 {
     font-weight: normal;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
+    line-height: 130%;
 }
 
 header {
@@ -42,30 +51,36 @@ header {
 .logo-box {
     display: flex;
     justify-content: center;
-    background-color: $color-second;
+    background-color: var(--color-second);
     width: 100vw;
-    margin-bottom: -2rem;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%);
+    margin-bottom: var(--negative-slant-horiz-param);
+    padding-bottom: var(--slant-horiz-param);
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - var(--slant-horiz-param)),
+        0 100%
+    );
 
     .logo {
         width: 75%;
         margin: 1rem;
-        margin-bottom: 2rem;
     }
 }
 
 main {
     position: relative;
-    margin-top: -20rem;
-    padding-top: 2rem;
-
-    clip-path: polygon(0 2rem, 100% 0, 100% 100%, 0 100%);
-
-    background-color: $color-main;
-    color: $color-second;
+    background-color: var(--color-main);
+    // margin-top: -20rem;
 }
 
 .heading-primary {
+    background-color: var(--color-main);
+    position: absolute;
+    padding-top: var(--slant-horiz-param);
+
+    clip-path: polygon(0 var(--slant-horiz-param), 100% 0, 100% 100%, 0 100%);
+    bottom: 0;
     text-align: center;
 
     &--main,
@@ -74,6 +89,6 @@ main {
     }
 
     &--sub {
-        color: $color-third;
+        color: var(--color-third);
     }
 }

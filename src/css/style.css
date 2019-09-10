@@ -1,3 +1,10 @@
+:root {
+  --color-main: #d60b52;
+  --color-second: #ffffff;
+  --color-third: #0a0a0a;
+  --slant-horiz-param: 2.5rem;
+  --negative-slant-horiz-param: calc(var(--slant-horiz-param) * -1); }
+
 *,
 *::after,
 *::before {
@@ -11,11 +18,13 @@ html {
 body {
   box-sizing: border-box;
   font-size: 1.6rem;
-  font-family: 'Baloo', cursive; }
+  font-family: 'Baloo', cursive;
+  color: var(--color-second); }
 
 h1 {
   font-weight: normal;
-  font-size: 2.4rem; }
+  font-size: 2.2rem;
+  line-height: 130%; }
 
 header {
   position: relative;
@@ -31,26 +40,27 @@ header {
 .logo-box {
   display: flex;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: var(--color-second);
   width: 100vw;
-  margin-bottom: -2rem;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%); }
+  margin-bottom: var(--negative-slant-horiz-param);
+  padding-bottom: var(--slant-horiz-param);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant-horiz-param)), 0 100%); }
   .logo-box .logo {
     width: 75%;
-    margin: 1rem;
-    margin-bottom: 2rem; }
+    margin: 1rem; }
 
 main {
   position: relative;
-  margin-top: -20rem;
-  padding-top: 2rem;
-  clip-path: polygon(0 2rem, 100% 0, 100% 100%, 0 100%);
-  background-color: #d60b52;
-  color: #ffffff; }
+  background-color: var(--color-main); }
 
 .heading-primary {
+  background-color: var(--color-main);
+  position: absolute;
+  padding-top: var(--slant-horiz-param);
+  clip-path: polygon(0 var(--slant-horiz-param), 100% 0, 100% 100%, 0 100%);
+  bottom: 0;
   text-align: center; }
   .heading-primary--main, .heading-primary--sub {
     display: block; }
   .heading-primary--sub {
-    color: #0a0a0a; }
+    color: var(--color-third); }
