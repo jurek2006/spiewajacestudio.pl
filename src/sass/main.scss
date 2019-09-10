@@ -1,3 +1,79 @@
+$color-main: #d60b52;
+$color-second: #ffffff;
+$color-third: #0a0a0a;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
 body {
-    background-color: white;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    font-family: 'Baloo', cursive;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 2.4rem;
+}
+
+header {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.photo-box {
+    background: url(../img/background-huge.jpg) no-repeat 40% center;
+    background-size: cover;
+
+    height: calc(100% - 20rem); //scale background photo
+}
+
+.logo-box {
+    display: flex;
+    justify-content: center;
+    background-color: $color-second;
+    width: 100vw;
+    margin-bottom: -2rem;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%);
+
+    .logo {
+        width: 75%;
+        margin: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+main {
+    position: relative;
+    margin-top: -20rem;
+    padding-top: 2rem;
+
+    clip-path: polygon(0 2rem, 100% 0, 100% 100%, 0 100%);
+
+    background-color: $color-main;
+    color: $color-second;
+}
+
+.heading-primary {
+    text-align: center;
+
+    &--main,
+    &--sub {
+        display: block;
+    }
+
+    &--sub {
+        color: $color-third;
+    }
 }
