@@ -20,10 +20,17 @@ body {
   font-family: 'Baloo', cursive;
   color: var(--color-second); }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: normal;
-  font-size: 2.8rem;
   line-height: 130%; }
+
+h2 {
+  font-size: 2.8rem; }
 
 header {
   position: relative;
@@ -38,15 +45,16 @@ header {
 
 .logo-box {
   display: flex;
-  justify-content: center;
   background-color: var(--color-second);
-  width: 100vw;
   margin-bottom: var(--negative-slant-horiz-param);
   padding-bottom: var(--slant-horiz-param);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant-horiz-param)), 0 100%); }
-  .logo-box .logo {
-    width: 75%;
-    margin: 1rem; }
+
+.heading-logo {
+  width: 100vh; }
+  .heading-logo__image {
+    margin: 1.5rem;
+    margin-bottom: 0; }
 
 main {
   position: relative;
@@ -95,3 +103,8 @@ main {
 .link__icon {
   height: 1.2em;
   margin-right: 0.5rem; }
+
+.visually-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none; }
