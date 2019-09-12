@@ -1,0 +1,10 @@
+:root {
+    --color-main: #d60b52;
+    --color-second: #ffffff;
+    --color-third: #0a0a0a;
+
+    --padding-default: 2rem;
+
+    --slant-horiz-param: 2.5rem;
+    --negative-slant-horiz-param: calc(var(--slant-horiz-param) * -1);
+}

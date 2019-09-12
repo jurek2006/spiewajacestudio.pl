@@ -1,13 +1,5 @@
-:root {
-    --color-main: #d60b52;
-    --color-second: #ffffff;
-    --color-third: #0a0a0a;
-
-    --padding-default: 2rem;
-
-    --slant-horiz-param: 2.5rem;
-    --negative-slant-horiz-param: calc(var(--slant-horiz-param) * -1);
-}
+@import 'variables';
+@import 'mixins';
 
 // ------------------------------------------------------------------------------------------
 
@@ -26,7 +18,6 @@ html {
 body {
     box-sizing: border-box;
     font-family: 'Baloo', cursive;
-    color: var(--color-second);
 }
 
 h1,
@@ -45,6 +36,17 @@ h6 {
     display: grid;
     grid-template-rows: auto 1fr auto;
 
+    @include tablet {
+        grid-template-rows: 1fr auto;
+    }
+
+    &__logo {
+        @include tablet {
+            position: absolute;
+            right: 0;
+        }
+    }
+
     &__photo-box {
         background: url(../img/background-huge.jpg) no-repeat 40% center;
         background-size: cover;
@@ -54,6 +56,15 @@ h6 {
         background-color: var(--color-main);
         font-size: 3rem;
         padding: var(--padding-default);
+
+        @include tablet {
+            font-size: 5rem;
+        }
+    }
+
+    @include tablet {
+        height: auto;
+        flex-grow: 1;
     }
 }
 
@@ -71,6 +82,10 @@ h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include tablet {
+        height: auto;
+    }
 
     &__link {
         color: var(--color-second);
@@ -97,6 +112,14 @@ h6 {
         &:hover {
             text-decoration: underline;
         }
+    }
+}
+
+.tablet-wrapper {
+    @include tablet {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 }
 
