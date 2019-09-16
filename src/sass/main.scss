@@ -63,6 +63,7 @@ h6 {
 
 .site-header {
     height: 100vh;
+    min-height: 50rem;
     display: grid;
     grid-template-rows: auto 1fr auto;
 
@@ -95,8 +96,8 @@ h6 {
         font-size: 3rem;
         padding: var(--padding-default);
 
-        @include tablet {
-            font-size: 5rem;
+        @include tablet-bigger {
+            font-size: 4rem;
         }
     }
 
