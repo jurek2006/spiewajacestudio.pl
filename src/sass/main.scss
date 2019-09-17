@@ -80,6 +80,11 @@ h6 {
         grid-template-rows: 1fr auto;
     }
 
+    @include desktop {
+        grid-template-rows: auto auto;
+        justify-items: center;
+    }
+
     &__logo {
         @include tablet {
             position: absolute;
@@ -88,6 +93,8 @@ h6 {
         }
         @include desktop {
             position: static;
+            width: 90%;
+            padding: 5%;
         }
     }
 
@@ -124,6 +131,7 @@ h6 {
         font-size: 3rem;
         padding: var(--padding-default);
         padding-top: var(--slant-rows-param);
+
         @include tablet-bigger {
             font-size: 4rem;
         }
@@ -135,6 +143,16 @@ h6 {
     }
 
     @include desktop {
+    }
+}
+
+.heading-main {
+    &--element {
+        display: block;
+
+        &:nth-child(2n) {
+            color: var(--color-second);
+        }
     }
 }
 
