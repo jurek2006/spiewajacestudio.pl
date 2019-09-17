@@ -5,8 +5,8 @@
   --padding-default: 2rem;
   --slant-rows-param: 2.5vh;
   --negative-slant-rows-param: -2.5vh;
-  --slant-columns-param: 10vw;
-  --negative-slant-columns-param: -10vw; }
+  --slant-columns-param: 15vw;
+  --negative-slant-columns-param: -15vw; }
 
 *,
 *::after,

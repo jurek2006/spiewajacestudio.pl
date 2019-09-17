@@ -6,8 +6,8 @@
     --padding-default: 2rem;
 
     --slant-rows-param: 2.5vh; //slant parameter for rows
-    --negative-slant-rows-param: -2.5vh;
+    --negative-slant-rows-param: -2.5vh; // negative value (not working with calc()
 
-    --slant-columns-param: 10vw; //slant parameter for rows
-    --negative-slant-columns-param: -10vw;
+    --slant-columns-param: 15vw; //slant parameter when elements placed in columns
+    --negative-slant-columns-param: -15vw; // negative value (not working with calc()
 }
