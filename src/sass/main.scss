@@ -108,6 +108,13 @@ h6 {
             width: 90%;
             padding: 5%;
         }
+
+        & svg path.logo-person {
+            // Color of logo part "Kamili Bakalarczyk" (changes on desktop resolutions)
+            @include desktop {
+                fill: var(--color-second);
+            }
+        }
     }
 
     &__photo-box {

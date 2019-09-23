@@ -91,6 +91,9 @@ h6 {
       position: static;
       width: 90%;
       padding: 5%; } }
+  @media (min-width: 1023px) {
+    .site-header__logo svg path.logo-person {
+      fill: var(--color-second); } }
   .site-header__photo-box {
     background: url(../img/background-huge.jpg) no-repeat 40% center;
     background-size: cover;
