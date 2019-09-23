@@ -58,7 +58,8 @@ h6 {
     background-color: var(--color-main);
     clip-path: polygon(0 0, 100% 0%, 100% 100%, var(--slant-columns-param) 100%);
     margin-left: calc(var(--negative-slant-columns-param) / 2);
-    padding-left: calc(var(--slant-columns-param) / 2); } }
+    padding-left: calc(var(--slant-columns-param) / 2);
+    overflow-y: auto; } }
 
 .site-header {
   min-height: 100vh;
