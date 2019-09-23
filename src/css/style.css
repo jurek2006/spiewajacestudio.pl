@@ -17,6 +17,9 @@
 
 html {
   font-size: 62.5%; }
+  @media (min-width: 4000px) {
+    html {
+      font-size: 125%; } }
 
 body {
   box-sizing: border-box;

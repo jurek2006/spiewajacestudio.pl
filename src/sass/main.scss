@@ -13,6 +13,9 @@
 
 html {
     font-size: 62.5%;
+    @include retina4k {
+        font-size: 125%;
+    }
 }
 
 body {

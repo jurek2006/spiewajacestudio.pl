@@ -26,3 +26,9 @@
         @content;
     }
 }
+
+@mixin retina4k {
+    @media (min-width: 4000px) {
+        @content;
+    }
+}
