@@ -71,16 +71,24 @@ h6 {
 }
 
 .site-header {
-    height: 100vh;
-    min-height: 50rem;
+    // height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
 
     @include tablet {
+        // height: auto;
+        min-height: auto;
+        flex-grow: 1;
         grid-template-rows: 1fr auto;
     }
 
+    @include tablet-landscape {
+        min-height: 100vh;
+    }
+
     @include desktop {
+        min-height: auto;
         grid-template-rows: auto auto;
         justify-items: center;
     }
@@ -132,17 +140,13 @@ h6 {
         padding: var(--padding-default);
         padding-top: var(--slant-rows-param);
 
+        @include tablet-landscape {
+            font-size: 2rem;
+        }
+
         @include tablet-bigger {
             font-size: 4rem;
         }
-    }
-
-    @include tablet {
-        height: auto;
-        flex-grow: 1;
-    }
-
-    @include desktop {
     }
 }
 

@@ -1,11 +1,22 @@
+@mixin phone-landscape {
+    @media (max-width: 399px) and (orientation: landscape) {
+        @content;
+    }
+}
+
 @mixin tablet {
     @media (min-width: 400px) {
         @content;
     }
 }
+@mixin tablet-landscape {
+    @media (min-width: 400px) and (orientation: landscape) {
+        @content;
+    }
+}
 
 @mixin tablet-bigger {
-    @media (min-width: 800px) {
+    @media (min-width: 900px) {
         @content;
     }
 }
