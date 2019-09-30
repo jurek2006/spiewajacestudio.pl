@@ -45,7 +45,7 @@ h6 {
         @include desktop {
             height: 100%;
             width: 100%;
-            background: url(../img/background-huge.jpg) no-repeat 40% center;
+            background: url(../img/background2300_opt.jpg) no-repeat 40% center;
             background-size: cover;
             margin-right: calc(var(--negative-slant-columns-param) / 2);
         }
@@ -116,7 +116,7 @@ h6 {
     }
 
     &__photo-box {
-        background: url(../img/background-huge.jpg) no-repeat 40% center;
+        background: url(../img/background2300_opt.jpg) no-repeat 40% center;
         background-size: cover;
 
         height: 100%;
