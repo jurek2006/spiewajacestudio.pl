@@ -85,7 +85,7 @@ h6 {
         grid-template-rows: 1fr auto;
     }
 
-    @include tablet-landscape {
+    @include phone-landscape {
         min-height: 100vh;
     }
 
@@ -149,7 +149,7 @@ h6 {
         padding: var(--padding-default);
         padding-top: var(--slant-rows-param);
 
-        @include tablet-landscape {
+        @include phone-landscape {
             font-size: 2rem;
         }
 
@@ -181,11 +181,14 @@ h6 {
 
     height: 100vh;
     max-height: 70rem;
-    min-height: 100%; // fix for issue - element not adjusting its height to children height when has display: flex; (on some older browsers)
+
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @include phone-landscape {
+        min-height: 100%; // fix for issue - element not adjusting its height to children height when has display: flex; (on some older browsers)
+    }
     @include tablet {
         height: auto;
     }

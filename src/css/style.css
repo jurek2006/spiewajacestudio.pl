@@ -134,10 +134,12 @@ h6 {
   padding: var(--padding-default);
   height: 100vh;
   max-height: 70rem;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center; }
+  @media (min-width: 400px) and (orientation: landscape) {
+    .contact {
+      min-height: 100%; } }
   @media (min-width: 400px) {
     .contact {
       height: auto; } }

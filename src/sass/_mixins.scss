@@ -9,7 +9,7 @@
         @content;
     }
 }
-@mixin tablet-landscape {
+@mixin phone-landscape {
     @media (min-width: 400px) and (orientation: landscape) {
         @content;
     }
