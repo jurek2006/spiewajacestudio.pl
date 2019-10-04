@@ -141,6 +141,9 @@ h6 {
   @media (min-width: 400px) {
     .contact {
       height: auto; } }
+  @media (min-width: 1023px) {
+    .contact {
+      min-height: auto; } }
   .contact__link {
     color: var(--color-second);
     text-decoration: none;

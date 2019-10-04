@@ -190,6 +190,10 @@ h6 {
         height: auto;
     }
 
+    @include desktop {
+        min-height: auto; // needed in fix to make .contact box height adjusted to its children, not bigger
+    }
+
     &__link {
         color: var(--color-second);
         text-decoration: none;
