@@ -137,9 +137,15 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  @media (min-width: 400px) and (orientation: landscape) {
+    .contact {
+      min-height: 100%; } }
   @media (min-width: 400px) {
     .contact {
       height: auto; } }
+  @media (min-width: 1023px) {
+    .contact {
+      min-height: auto; } }
   .contact__link {
     color: var(--color-second);
     text-decoration: none;
