@@ -1,3 +1,4 @@
+// MEDIA QUERIES
 @mixin phone-landscape {
     @media (max-width: 399px) and (orientation: landscape) {
         @content;
@@ -29,6 +30,16 @@
 
 @mixin retina4k {
     @media (min-width: 4000px) {
+        @content;
+    }
+}
+
+// ONLY SAFARI
+@mixin safari-only-fix {
+    // target only safari browsers
+    ._::-webkit-full-page-media,
+    _:future,
+    :root & {
         @content;
     }
 }

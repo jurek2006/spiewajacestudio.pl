@@ -157,8 +157,13 @@ h6 {
             font-size: 4rem;
         }
     }
-}
 
+    // FIX element's height on safari
+    // when flexbox element contains grid element and other nested flexbox element
+    @include safari-only-fix {
+        flex-grow: 0;
+    }
+}
 .heading-main {
     &--element {
         display: block;
@@ -183,6 +188,7 @@ h6 {
     max-height: 70rem;
 
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
     align-items: center;
 
