@@ -46,9 +46,20 @@ h6 {
     .outer {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: min-content auto auto; } }
+  .outer__slant {
+    display: none; }
+    @media (min-width: 1199px) {
+      .outer__slant {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 20rem 100%);
+        display: block;
+        background-color: olivedrab;
+        grid-column: 2;
+        grid-row: 1 / 4;
+        margin-left: -20rem; } }
   .outer__contact {
     height: 100vh;
     border: 1px solid green;
+    z-index: 10;
     padding: var(--padding-default);
     display: flex;
     flex-direction: column;
@@ -93,8 +104,7 @@ h6 {
   @media (min-width: 420px) {
     .layout__logo {
       grid-column-start: 1;
-      grid-row-start: 1;
-      z-index: 1; } }
+      grid-row-start: 1; } }
   @media (min-width: 1199px) {
     .layout__logo {
       background-color: var(--color-second); } }
@@ -106,7 +116,8 @@ h6 {
   .layout__photo {
     background: url(../img/bg_wood_2300opt.jpg) no-repeat 59% center;
     background-size: cover;
-    width: 100%; }
+    width: 100%;
+    z-index: -10; }
     @media (min-width: 420px) {
       .layout__photo {
         grid-column-start: 1;
@@ -117,10 +128,12 @@ h6 {
         grid-row: 2 / 4; } }
   .layout__heading {
     padding: var(--padding-default);
-    text-align: center; }
+    text-align: center;
+    z-index: 10; }
     @media (min-width: 1199px) {
       .layout__heading {
-        grid-row: 1 / 3; } }
+        grid-row: 1 / 3;
+        grid-column: 2; } }
 
 .heading-main--element {
   font-size: 3rem;
