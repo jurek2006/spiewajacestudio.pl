@@ -21,6 +21,7 @@ html {
 body {
     box-sizing: border-box;
     font-family: 'Baloo', cursive;
+    background-color: var(--color-third);
 }
 
 h1,
@@ -43,9 +44,9 @@ h6 {
 
     &__photo-box {
         @include desktop {
-            height: 100%;
+            height: 80%;
             width: 100%;
-            background: url(../img/background2300_opt.jpg) no-repeat 40% center;
+            background: url(../img/bg_wood_2300opt.jpg) no-repeat 65% center;
             background-size: cover;
             margin-right: calc(var(--negative-slant-columns-param) / 2);
         }
@@ -78,6 +79,7 @@ h6 {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    background-color: var(--color-second);
 
     @include tablet {
         min-height: auto;
@@ -87,6 +89,7 @@ h6 {
 
     @include phone-landscape {
         min-height: 100vh;
+        background-color: transparent;
     }
 
     @include desktop {
@@ -98,13 +101,27 @@ h6 {
     &__logo {
         @include tablet {
             position: absolute;
-            right: 0;
+            top: 1rem;
+            left: 0;
             width: 45%;
         }
         @include desktop {
             position: static;
             width: 90%;
             padding: 5%;
+        }
+
+        & svg {
+            @include phone-landscape {
+                padding: 5%;
+                padding-right: 9%;
+                background-color: rgba($color: #ffffff, $alpha: 0.95);
+                clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+            }
+
+            @include desktop {
+                background-color: transparent;
+            }
         }
 
         & svg path.logo-person {
@@ -116,7 +133,7 @@ h6 {
     }
 
     &__photo-box {
-        background: url(../img/background2300_opt.jpg) no-repeat 40% center;
+        background: url(../img/bg_wood_2300opt.jpg) no-repeat 59% center;
         background-size: cover;
 
         height: 100%;
@@ -127,8 +144,18 @@ h6 {
             0% 100%
         );
 
+        @include phone-landscape {
+            background-size: 120%;
+            background-position-x: left;
+        }
+
         @include tablet {
+            height: 100%;
             clip-path: initial;
+        }
+
+        @include tablet-bigger {
+            background-size: cover;
         }
 
         @include desktop {
