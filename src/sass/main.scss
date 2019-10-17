@@ -35,21 +35,22 @@ h6 {
     text-align: center;
 }
 
-.outer {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+.layout {
+    &__wrapper {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
 
-    @include tablet {
-        height: 100vh;
-        // grid-template-rows: 1fr 1fr;
+        @include tablet {
+            height: 100vh;
+        }
+
+        @include desktop {
+            grid-template-columns: 1fr 20rem 1fr;
+            grid-template-rows: min-content auto auto;
+        }
     }
 
-    @include desktop {
-        grid-template-columns: 1fr 20rem 1fr;
-        grid-template-rows: min-content auto auto;
-    }
-
-    &__slant {
+    &__slant-bg {
         display: none;
 
         @include desktop {
@@ -61,12 +62,6 @@ h6 {
             // margin-left: -20rem;
         }
     }
-
-    // @supports (display: contents) {
-    //     &__slant {
-    //         background-color: royalblue;
-    //     }
-    // }
 
     &__contact {
         height: 100vh;
@@ -114,32 +109,32 @@ h6 {
             }
         }
     }
-}
 
-.layout {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr;
+    &__header {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr;
 
-    @include tablet {
-        height: auto;
-    }
+        @include tablet {
+            height: auto;
+        }
 
-    @include phone-landscape {
-        // has to be after tablet version to overwrite some styles
-        height: inherit;
-    }
+        @include phone-landscape {
+            // has to be after tablet version to overwrite some styles
+            height: inherit;
+        }
 
-    @include tablet-bigger {
-        height: auto;
-    }
+        @include tablet-bigger {
+            height: auto;
+        }
 
-    @include desktop {
-        display: contents;
-    }
+        @include desktop {
+            display: contents;
+        }
 
-    & > * {
-        border: 1px solid red;
+        & > * {
+            border: 1px solid red;
+        }
     }
 
     &__logo {
@@ -199,6 +194,7 @@ h6 {
         }
     }
 }
+
 .heading-main {
     &--element {
         font-size: 3rem;
