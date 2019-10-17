@@ -130,6 +130,10 @@ h6 {
         height: inherit;
     }
 
+    @include tablet-bigger {
+        height: auto;
+    }
+
     @include desktop {
         display: contents;
     }
@@ -139,7 +143,14 @@ h6 {
     }
 
     &__logo {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%);
+        background-color: var(--color-second);
+        padding: var(--padding-default);
+        padding-bottom: 2rem;
+        margin-bottom: -2rem;
+
         @include tablet {
+            background-color: transparent;
             grid-column-start: 1;
             grid-row-start: 1;
         }
@@ -176,6 +187,9 @@ h6 {
     }
 
     &__heading {
+        margin-top: -2rem;
+        clip-path: polygon(0 2rem, 100% 0, 100% 100%, 0 100%);
+        background-color: var(--color-main);
         padding: var(--padding-default);
         text-align: center;
         z-index: 10;
