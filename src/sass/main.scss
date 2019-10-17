@@ -21,7 +21,7 @@ html {
 body {
     box-sizing: border-box;
     font-family: 'Baloo', cursive;
-    background-color: var(--color-third);
+    background-color: var(--color-main);
 }
 
 h1,
@@ -44,12 +44,54 @@ h6 {
         // grid-template-rows: 1fr 1fr;
     }
 
+    @include desktop {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content auto auto;
+    }
+
     &__contact {
         height: 100vh;
         border: 1px solid green;
 
+        padding: var(--padding-default);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         @include tablet {
             height: auto;
+        }
+
+        @include desktop {
+            grid-row: 3;
+            grid-column: 2;
+        }
+
+        .contact__link {
+            color: var(--color-second);
+            text-decoration: none;
+            display: block;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+
+            &--bigger {
+                font-size: 2.5rem;
+                flex-grow: 1;
+            }
+
+            &--alt-color {
+                color: var(--color-third);
+            }
+
+            &--withIcon {
+                display: flex;
+                align-items: center;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
@@ -63,6 +105,10 @@ h6 {
         height: auto;
     }
 
+    @include desktop {
+        display: contents;
+    }
+
     & > * {
         border: 1px solid red;
     }
@@ -72,6 +118,10 @@ h6 {
             grid-column-start: 1;
             grid-row-start: 1;
             z-index: 1;
+        }
+
+        @include desktop {
+            background-color: var(--color-second);
         }
 
         & svg {
@@ -92,9 +142,18 @@ h6 {
             grid-row-start: 1;
             grid-row-end: 3;
         }
+
+        @include desktop {
+            grid-row: 2 / 4;
+        }
     }
 
     &__heading {
+        padding: var(--padding-default);
+        text-align: center;
+        @include desktop {
+            grid-row: 1 / 3;
+        }
     }
 }
 .heading-main {
@@ -106,6 +165,17 @@ h6 {
             color: var(--color-second);
         }
     }
+}
+
+.link__icon {
+    height: 1.2em;
+    margin-right: 0.5rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
 
 // .desktop-wrapper {
