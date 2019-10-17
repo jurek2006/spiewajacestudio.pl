@@ -37,10 +37,20 @@ h6 {
 
 .outer {
     display: grid;
+    grid-template-rows: 1fr 1fr;
+
+    @include tablet {
+        height: 100vh;
+        // grid-template-rows: 1fr 1fr;
+    }
 
     &__contact {
         height: 100vh;
         border: 1px solid green;
+
+        @include tablet {
+            height: auto;
+        }
     }
 }
 
@@ -48,8 +58,10 @@ h6 {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
-    width: 100vw;
-    height: 100vh;
+
+    @include tablet {
+        height: auto;
+    }
 
     & > * {
         border: 1px solid red;

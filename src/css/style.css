@@ -37,17 +37,25 @@ h6 {
   text-align: center; }
 
 .outer {
-  display: grid; }
+  display: grid;
+  grid-template-rows: 1fr 1fr; }
+  @media (min-width: 420px) {
+    .outer {
+      height: 100vh; } }
   .outer__contact {
     height: 100vh;
     border: 1px solid green; }
+    @media (min-width: 420px) {
+      .outer__contact {
+        height: auto; } }
 
 .layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr;
-  width: 100vw;
-  height: 100vh; }
+  grid-template-columns: 1fr; }
+  @media (min-width: 420px) {
+    .layout {
+      height: auto; } }
   .layout > * {
     border: 1px solid red; }
   @media (min-width: 420px) {
