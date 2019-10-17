@@ -35,164 +35,59 @@ h6 {
     text-align: center;
 }
 
-.desktop-wrapper {
-    @include desktop {
-        height: 100vh;
-        display: flex;
-        justify-content: flex-end;
-    }
+.outer {
+    display: grid;
 
-    &__photo-box {
-        @include desktop {
-            height: 80%;
-            width: 100%;
-            background: url(../img/bg_wood_2300opt.jpg) no-repeat 65% center;
-            background-size: cover;
-            margin-right: calc(var(--negative-slant-columns-param) / 2);
-        }
+    &__contact {
+        height: 100vh;
+        border: 1px solid green;
     }
 }
 
-.tablet-wrapper {
-    @include tablet {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-    }
-
-    @include desktop {
-        background-color: var(--color-main);
-        clip-path: polygon(
-            0 0,
-            100% 0%,
-            100% 100%,
-            var(--slant-columns-param) 100%
-        );
-        margin-left: calc(var(--negative-slant-columns-param) / 2);
-        padding-left: calc(var(--slant-columns-param) / 2);
-        overflow-y: auto;
-    }
-}
-
-.site-header {
-    min-height: 100vh;
+.layout {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-color: var(--color-second);
+    grid-template-columns: 1fr;
+    width: 100vw;
+    height: 100vh;
 
-    @include tablet {
-        min-height: auto;
-        flex-grow: 1;
-        grid-template-rows: 1fr auto;
-    }
-
-    @include phone-landscape {
-        min-height: 100vh;
-        background-color: transparent;
-    }
-
-    @include desktop {
-        min-height: auto;
-        grid-template-rows: auto auto;
-        justify-items: center;
+    & > * {
+        border: 1px solid red;
     }
 
     &__logo {
         @include tablet {
-            position: absolute;
-            top: 1rem;
-            left: 0;
-            width: 45%;
-        }
-        @include desktop {
-            position: static;
-            width: 90%;
-            padding: 5%;
+            grid-column-start: 1;
+            grid-row-start: 1;
+            z-index: 1;
         }
 
         & svg {
-            @include phone-landscape {
-                padding: 5%;
-                padding-right: 9%;
-                background-color: rgba($color: #ffffff, $alpha: 0.95);
-                clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
-            }
-
-            @include desktop {
-                background-color: transparent;
-            }
-        }
-
-        & svg path.logo-person {
-            // Color of logo part "Kamili Bakalarczyk" (changes on desktop resolutions)
-            @include desktop {
-                fill: var(--color-second);
+            width: 100%;
+            @include tablet {
+                width: 30%;
             }
         }
     }
 
-    &__photo-box {
+    &__photo {
         background: url(../img/bg_wood_2300opt.jpg) no-repeat 59% center;
         background-size: cover;
-
-        height: 100%;
-        clip-path: polygon(
-            0 var(--slant-rows-param),
-            100% 0,
-            100% 100%,
-            0% 100%
-        );
-
-        @include phone-landscape {
-            background-size: 120%;
-            background-position-x: left;
-        }
+        width: 100%;
 
         @include tablet {
-            height: 100%;
-            clip-path: initial;
-        }
-
-        @include tablet-bigger {
-            background-size: cover;
-        }
-
-        @include desktop {
-            display: none;
+            grid-column-start: 1;
+            grid-row-start: 1;
+            grid-row-end: 3;
         }
     }
 
     &__heading {
-        margin-top: var(--negative-slant-rows-param);
-        clip-path: polygon(
-            0 var(--slant-rows-param),
-            100% 0,
-            100% 100%,
-            0% 100%
-        );
-        background-color: var(--color-main);
-        font-size: 3rem;
-        padding: var(--padding-default);
-        padding-top: var(--slant-rows-param);
-
-        @include phone-landscape {
-            font-size: 2rem;
-        }
-
-        @include tablet-bigger {
-            font-size: 4rem;
-        }
-    }
-
-    // FIX element's height on safari
-    // when flexbox element contains grid element and other nested flexbox element
-    @include safari-only-fix {
-        flex-grow: 0;
     }
 }
 .heading-main {
     &--element {
+        font-size: 3rem;
         display: block;
 
         &:nth-child(2n) {
@@ -201,70 +96,236 @@ h6 {
     }
 }
 
-.logo-image {
-    width: 100%;
-    padding: var(--padding-default);
-    padding-bottom: 0;
-}
+// .desktop-wrapper {
+//     @include desktop {
+//         height: 100vh;
+//         display: flex;
+//         justify-content: flex-end;
+//     }
 
-.contact {
-    background-color: var(--color-main);
-    padding: var(--padding-default);
+//     &__photo-box {
+//         @include desktop {
+//             height: 80%;
+//             width: 100%;
+//             background: url(../img/bg_wood_2300opt.jpg) no-repeat 65% center;
+//             background-size: cover;
+//             margin-right: calc(var(--negative-slant-columns-param) / 2);
+//         }
+//     }
+// }
 
-    height: 100vh;
-    max-height: 70rem;
+// .tablet-wrapper {
+//     @include tablet {
+//         height: 100vh;
+//         width: 100vw;
+//         display: flex;
+//         flex-direction: column;
+//     }
 
-    display: flex;
-    flex-shrink: 0;
-    flex-direction: column;
-    align-items: center;
+//     @include desktop {
+//         background-color: var(--color-main);
+//         clip-path: polygon(
+//             0 0,
+//             100% 0%,
+//             100% 100%,
+//             var(--slant-columns-param) 100%
+//         );
+//         margin-left: calc(var(--negative-slant-columns-param) / 2);
+//         padding-left: calc(var(--slant-columns-param) / 2);
+//         overflow-y: auto;
+//     }
+// }
 
-    @include phone-landscape {
-        min-height: 100%; // fix for issue - element not adjusting its height to children height when has display: flex; (on some older browsers)
-    }
-    @include tablet {
-        height: auto;
-    }
+// .site-header {
+//     min-height: 100vh;
+//     display: grid;
+//     grid-template-rows: auto 1fr auto;
+//     background-color: var(--color-second);
 
-    @include desktop {
-        min-height: auto; // needed in fix to make .contact box height adjusted to its children, not bigger
-    }
+//     @include tablet {
+//         min-height: auto;
+//         flex-grow: 1;
+//         grid-template-rows: 1fr auto;
+//     }
 
-    &__link {
-        color: var(--color-second);
-        text-decoration: none;
-        display: block;
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 1rem;
+//     @include phone-landscape {
+//         min-height: 100vh;
+//         background-color: transparent;
+//     }
 
-        &--bigger {
-            font-size: 2.5rem;
-            flex-grow: 1;
-        }
+//     @include desktop {
+//         min-height: auto;
+//         grid-template-rows: auto auto;
+//         justify-items: center;
+//     }
 
-        &--alt-color {
-            color: var(--color-third);
-        }
+//     &__logo {
+//         @include tablet {
+//             position: absolute;
+//             top: 1rem;
+//             left: 0;
+//             width: 45%;
+//         }
+//         @include desktop {
+//             position: static;
+//             width: 90%;
+//             padding: 5%;
+//         }
 
-        &--withIcon {
-            display: flex;
-            align-items: center;
-        }
+//         & svg {
+//             @include phone-landscape {
+//                 padding: 5%;
+//                 padding-right: 9%;
+//                 background-color: rgba($color: #ffffff, $alpha: 0.95);
+//                 clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+//             }
 
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
+//             @include desktop {
+//                 background-color: transparent;
+//             }
+//         }
 
-.link__icon {
-    height: 1.2em;
-    margin-right: 0.5rem;
-}
+//         & svg path.logo-person {
+//             // Color of logo part "Kamili Bakalarczyk" (changes on desktop resolutions)
+//             @include desktop {
+//                 fill: var(--color-second);
+//             }
+//         }
+//     }
 
-.visually-hidden {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
+//     &__photo-box {
+//         background: url(../img/bg_wood_2300opt.jpg) no-repeat 59% center;
+//         background-size: cover;
+
+//         height: 100%;
+//         clip-path: polygon(
+//             0 var(--slant-rows-param),
+//             100% 0,
+//             100% 100%,
+//             0% 100%
+//         );
+
+//         @include phone-landscape {
+//             background-size: 120%;
+//             background-position-x: left;
+//         }
+
+//         @include tablet {
+//             height: 100%;
+//             clip-path: initial;
+//         }
+
+//         @include tablet-bigger {
+//             background-size: cover;
+//         }
+
+//         @include desktop {
+//             display: none;
+//         }
+//     }
+
+//     &__heading {
+//         margin-top: var(--negative-slant-rows-param);
+//         clip-path: polygon(
+//             0 var(--slant-rows-param),
+//             100% 0,
+//             100% 100%,
+//             0% 100%
+//         );
+//         background-color: var(--color-main);
+//         font-size: 3rem;
+//         padding: var(--padding-default);
+//         padding-top: var(--slant-rows-param);
+
+//         @include phone-landscape {
+//             font-size: 2rem;
+//         }
+
+//         @include tablet-bigger {
+//             font-size: 4rem;
+//         }
+//     }
+
+//     // FIX element's height on safari
+//     // when flexbox element contains grid element and other nested flexbox element
+//     @include safari-only-fix {
+//         flex-grow: 0;
+//     }
+// }
+// .heading-main {
+//     &--element {
+//         display: block;
+
+//         &:nth-child(2n) {
+//             color: var(--color-second);
+//         }
+//     }
+// }
+
+// .logo-image {
+//     width: 100%;
+//     padding: var(--padding-default);
+//     padding-bottom: 0;
+// }
+
+// .contact {
+//     background-color: var(--color-main);
+//     padding: var(--padding-default);
+
+//     height: 100vh;
+//     max-height: 70rem;
+
+//     display: flex;
+//     flex-shrink: 0;
+//     flex-direction: column;
+//     align-items: center;
+
+//     @include phone-landscape {
+//         min-height: 100%; // fix for issue - element not adjusting its height to children height when has display: flex; (on some older browsers)
+//     }
+//     @include tablet {
+//         height: auto;
+//     }
+
+//     @include desktop {
+//         min-height: auto; // needed in fix to make .contact box height adjusted to its children, not bigger
+//     }
+
+//     &__link {
+//         color: var(--color-second);
+//         text-decoration: none;
+//         display: block;
+//         font-size: 2rem;
+//         text-align: center;
+//         margin-bottom: 1rem;
+
+//         &--bigger {
+//             font-size: 2.5rem;
+//             flex-grow: 1;
+//         }
+
+//         &--alt-color {
+//             color: var(--color-third);
+//         }
+
+//         &--withIcon {
+//             display: flex;
+//             align-items: center;
+//         }
+
+//         &:hover {
+//             text-decoration: underline;
+//         }
+//     }
+// }
+
+// .link__icon {
+//     height: 1.2em;
+//     margin-right: 0.5rem;
+// }
+
+// .visually-hidden {
+//     position: absolute;
+//     opacity: 0;
+//     pointer-events: none;
+// }
