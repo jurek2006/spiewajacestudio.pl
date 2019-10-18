@@ -1,4 +1,11 @@
 // MEDIA QUERIES
+@mixin phone-narrow-only {
+    // special mixin to tweak styles on very narrow mobiles (i.e. iPhone 5/SE)
+    @media (max-width: 350px) {
+        @content;
+    }
+}
+
 @mixin phone-landscape {
     @media (min-width: 420px) and (orientation: landscape) {
         @content;

@@ -1,13 +1,11 @@
-:root {
-    --color-main: #d60b52;
-    --color-second: #ffffff;
-    --color-third: #0a0a0aea;
+// COLORS
+$color-primary: #d60b52;
+$color-secondary: #ffffff;
+$color-tertiary: #0a0a0aea;
 
-    --padding-default: 2rem;
+// PADDING
+$padding-default: 2rem;
 
-    --slant-rows-param: 2.5vh; //slant parameter for rows
-    --negative-slant-rows-param: -2.5vh; // negative value (not working with calc()
-
-    --slant-columns-param: 15vw; //slant parameter when elements placed in columns
-    --negative-slant-columns-param: -15vw; // negative value (not working with calc()
-}
+// SLANT ELEMENTS
+$slant-horizontal: 2rem; //slant parameter for rows
+$slant-vertical: 20rem; //slant parameter for columns (desktop resolutions only)
