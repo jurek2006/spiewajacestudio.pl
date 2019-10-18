@@ -72,63 +72,45 @@ h6 {
     .layout__contact {
       grid-row: 3;
       grid-column: 3; } }
-  .layout__contact .contact__link {
-    color: var(--color-second);
-    text-decoration: none;
-    display: block;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1rem; }
-    .layout__contact .contact__link--bigger {
-      font-size: 2.5rem;
-      flex-grow: 1; }
-    .layout__contact .contact__link--alt-color {
-      color: var(--color-third); }
-    .layout__contact .contact__link--withIcon {
-      display: flex;
-      align-items: center; }
-    .layout__contact .contact__link:hover {
-      text-decoration: underline; }
 
-.layout__header {
+.layout__header-wrapper {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr; }
   @media (min-width: 420px) {
-    .layout__header {
+    .layout__header-wrapper {
       height: auto; } }
   @media (min-width: 420px) and (orientation: landscape) {
-    .layout__header {
+    .layout__header-wrapper {
       height: inherit; } }
   @media (min-width: 900px) {
-    .layout__header {
+    .layout__header-wrapper {
       height: auto; } }
   @media (min-width: 1199px) {
-    .layout__header {
+    .layout__header-wrapper {
       display: contents; } }
-  .layout__header > * {
-    border: 1px solid red; }
 
-.layout__logo {
+.layout__logo-container {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%);
   background-color: var(--color-second);
   padding: var(--padding-default);
   padding-bottom: 2rem;
   margin-bottom: -2rem; }
   @media (min-width: 420px) {
-    .layout__logo {
+    .layout__logo-container {
       background-color: transparent;
       grid-column-start: 1;
       grid-row-start: 1; } }
   @media (min-width: 1199px) {
-    .layout__logo {
+    .layout__logo-container {
       grid-column: 1/3;
       background-color: var(--color-second); } }
-  .layout__logo svg {
-    width: 100%; }
-    @media (min-width: 420px) {
-      .layout__logo svg {
-        width: 30%; } }
+
+.layout__logo-image {
+  width: 100%; }
+  @media (min-width: 420px) {
+    .layout__logo-image {
+      width: 30%; } }
 
 .layout__photo {
   background: url(../img/bg_wood_2300opt.jpg) no-repeat 59% center;
@@ -162,6 +144,24 @@ h6 {
   display: block; }
   .heading-main--element:nth-child(2n) {
     color: var(--color-second); }
+
+.contact__link {
+  color: var(--color-second);
+  text-decoration: none;
+  display: block;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem; }
+  .contact__link--bigger {
+    font-size: 2.5rem;
+    flex-grow: 1; }
+  .contact__link--alt-color {
+    color: var(--color-third); }
+  .contact__link--withIcon {
+    display: flex;
+    align-items: center; }
+  .contact__link:hover {
+    text-decoration: underline; }
 
 .link__icon {
   height: 1.2em;

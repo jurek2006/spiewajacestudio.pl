@@ -35,6 +35,12 @@ h6 {
     text-align: center;
 }
 
+// .layout__wrapper is grid element and also contains .layout__header-wrapper which is also grid element
+// it is needed to make logo, photo and heading together with width 100vh for mobile
+// (where heading and logo need to have size according to their content and photo have to expand to fill left space
+// on desktop screens .layout__header-wrapper vanishes because of display: contents
+// and .layout-wrapper behaves as one grid positioned element
+
 .layout {
     &__wrapper {
         display: grid;
@@ -59,7 +65,6 @@ h6 {
             background-color: olivedrab;
             grid-column: 2 / 4;
             grid-row: 1 / 4;
-            // margin-left: -20rem;
         }
     }
 
@@ -81,36 +86,9 @@ h6 {
             grid-row: 3;
             grid-column: 3;
         }
-
-        .contact__link {
-            color: var(--color-second);
-            text-decoration: none;
-            display: block;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 1rem;
-
-            &--bigger {
-                font-size: 2.5rem;
-                flex-grow: 1;
-            }
-
-            &--alt-color {
-                color: var(--color-third);
-            }
-
-            &--withIcon {
-                display: flex;
-                align-items: center;
-            }
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
     }
 
-    &__header {
+    &__header-wrapper {
         display: grid;
         grid-template-rows: auto 1fr auto;
         grid-template-columns: 1fr;
@@ -131,13 +109,9 @@ h6 {
         @include desktop {
             display: contents;
         }
-
-        & > * {
-            border: 1px solid red;
-        }
     }
 
-    &__logo {
+    &__logo-container {
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%);
         background-color: var(--color-second);
         padding: var(--padding-default);
@@ -154,12 +128,13 @@ h6 {
             grid-column: 1/3;
             background-color: var(--color-second);
         }
+    }
 
-        & svg {
-            width: 100%;
-            @include tablet {
-                width: 30%;
-            }
+    &__logo-image {
+        width: 100%;
+
+        @include tablet {
+            width: 30%;
         }
     }
 
@@ -206,6 +181,33 @@ h6 {
     }
 }
 
+.contact__link {
+    color: var(--color-second);
+    text-decoration: none;
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+
+    &--bigger {
+        font-size: 2.5rem;
+        flex-grow: 1;
+    }
+
+    &--alt-color {
+        color: var(--color-third);
+    }
+
+    &--withIcon {
+        display: flex;
+        align-items: center;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .link__icon {
     height: 1.2em;
     margin-right: 0.5rem;
@@ -216,237 +218,3 @@ h6 {
     opacity: 0;
     pointer-events: none;
 }
-
-// .desktop-wrapper {
-//     @include desktop {
-//         height: 100vh;
-//         display: flex;
-//         justify-content: flex-end;
-//     }
-
-//     &__photo-box {
-//         @include desktop {
-//             height: 80%;
-//             width: 100%;
-//             background: url(../img/bg_wood_2300opt.jpg) no-repeat 65% center;
-//             background-size: cover;
-//             margin-right: calc(var(--negative-slant-columns-param) / 2);
-//         }
-//     }
-// }
-
-// .tablet-wrapper {
-//     @include tablet {
-//         height: 100vh;
-//         width: 100vw;
-//         display: flex;
-//         flex-direction: column;
-//     }
-
-//     @include desktop {
-//         background-color: var(--color-main);
-//         clip-path: polygon(
-//             0 0,
-//             100% 0%,
-//             100% 100%,
-//             var(--slant-columns-param) 100%
-//         );
-//         margin-left: calc(var(--negative-slant-columns-param) / 2);
-//         padding-left: calc(var(--slant-columns-param) / 2);
-//         overflow-y: auto;
-//     }
-// }
-
-// .site-header {
-//     min-height: 100vh;
-//     display: grid;
-//     grid-template-rows: auto 1fr auto;
-//     background-color: var(--color-second);
-
-//     @include tablet {
-//         min-height: auto;
-//         flex-grow: 1;
-//         grid-template-rows: 1fr auto;
-//     }
-
-//     @include phone-landscape {
-//         min-height: 100vh;
-//         background-color: transparent;
-//     }
-
-//     @include desktop {
-//         min-height: auto;
-//         grid-template-rows: auto auto;
-//         justify-items: center;
-//     }
-
-//     &__logo {
-//         @include tablet {
-//             position: absolute;
-//             top: 1rem;
-//             left: 0;
-//             width: 45%;
-//         }
-//         @include desktop {
-//             position: static;
-//             width: 90%;
-//             padding: 5%;
-//         }
-
-//         & svg {
-//             @include phone-landscape {
-//                 padding: 5%;
-//                 padding-right: 9%;
-//                 background-color: rgba($color: #ffffff, $alpha: 0.95);
-//                 clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
-//             }
-
-//             @include desktop {
-//                 background-color: transparent;
-//             }
-//         }
-
-//         & svg path.logo-person {
-//             // Color of logo part "Kamili Bakalarczyk" (changes on desktop resolutions)
-//             @include desktop {
-//                 fill: var(--color-second);
-//             }
-//         }
-//     }
-
-//     &__photo-box {
-//         background: url(../img/bg_wood_2300opt.jpg) no-repeat 59% center;
-//         background-size: cover;
-
-//         height: 100%;
-//         clip-path: polygon(
-//             0 var(--slant-rows-param),
-//             100% 0,
-//             100% 100%,
-//             0% 100%
-//         );
-
-//         @include phone-landscape {
-//             background-size: 120%;
-//             background-position-x: left;
-//         }
-
-//         @include tablet {
-//             height: 100%;
-//             clip-path: initial;
-//         }
-
-//         @include tablet-bigger {
-//             background-size: cover;
-//         }
-
-//         @include desktop {
-//             display: none;
-//         }
-//     }
-
-//     &__heading {
-//         margin-top: var(--negative-slant-rows-param);
-//         clip-path: polygon(
-//             0 var(--slant-rows-param),
-//             100% 0,
-//             100% 100%,
-//             0% 100%
-//         );
-//         background-color: var(--color-main);
-//         font-size: 3rem;
-//         padding: var(--padding-default);
-//         padding-top: var(--slant-rows-param);
-
-//         @include phone-landscape {
-//             font-size: 2rem;
-//         }
-
-//         @include tablet-bigger {
-//             font-size: 4rem;
-//         }
-//     }
-
-//     // FIX element's height on safari
-//     // when flexbox element contains grid element and other nested flexbox element
-//     @include safari-only-fix {
-//         flex-grow: 0;
-//     }
-// }
-// .heading-main {
-//     &--element {
-//         display: block;
-
-//         &:nth-child(2n) {
-//             color: var(--color-second);
-//         }
-//     }
-// }
-
-// .logo-image {
-//     width: 100%;
-//     padding: var(--padding-default);
-//     padding-bottom: 0;
-// }
-
-// .contact {
-//     background-color: var(--color-main);
-//     padding: var(--padding-default);
-
-//     height: 100vh;
-//     max-height: 70rem;
-
-//     display: flex;
-//     flex-shrink: 0;
-//     flex-direction: column;
-//     align-items: center;
-
-//     @include phone-landscape {
-//         min-height: 100%; // fix for issue - element not adjusting its height to children height when has display: flex; (on some older browsers)
-//     }
-//     @include tablet {
-//         height: auto;
-//     }
-
-//     @include desktop {
-//         min-height: auto; // needed in fix to make .contact box height adjusted to its children, not bigger
-//     }
-
-//     &__link {
-//         color: var(--color-second);
-//         text-decoration: none;
-//         display: block;
-//         font-size: 2rem;
-//         text-align: center;
-//         margin-bottom: 1rem;
-
-//         &--bigger {
-//             font-size: 2.5rem;
-//             flex-grow: 1;
-//         }
-
-//         &--alt-color {
-//             color: var(--color-third);
-//         }
-
-//         &--withIcon {
-//             display: flex;
-//             align-items: center;
-//         }
-
-//         &:hover {
-//             text-decoration: underline;
-//         }
-//     }
-// }
-
-// .link__icon {
-//     height: 1.2em;
-//     margin-right: 0.5rem;
-// }
-
-// .visually-hidden {
-//     position: absolute;
-//     opacity: 0;
-//     pointer-events: none;
-// }
