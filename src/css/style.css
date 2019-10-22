@@ -152,6 +152,9 @@ h6 {
   @media (max-width: 350px) {
     .heading-main--element {
       font-size: 2rem; } }
+  @media (min-width: 900px) {
+    .heading-main--element {
+      font-size: 4rem; } }
   .heading-main--element:nth-child(2n) {
     color: #ffffff; }
 

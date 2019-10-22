@@ -219,6 +219,10 @@ h6 {
             font-size: 2rem;
         }
 
+        @include tablet-bigger {
+            font-size: 4rem;
+        }
+
         &:nth-child(2n) {
             color: $color-secondary;
         }
