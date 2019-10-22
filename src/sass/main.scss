@@ -35,7 +35,6 @@ h4,
 h5,
 h6 {
     font-weight: normal;
-    line-height: 130%;
     text-align: center;
 }
 
@@ -107,6 +106,7 @@ h6 {
         background-color: $color-secondary;
         padding: $padding-default;
         margin-bottom: -$slant-horizontal;
+        text-align: left;
 
         @include tablet {
             // in clip path for tablet $slant-horizontal is divided by 3
@@ -301,22 +301,4 @@ h6 {
     position: absolute;
     opacity: 0;
     pointer-events: none;
-}
-
-// REMOVE - only for testing:
-// show blue screen on browsers which doesn't handle display: contents
-.no-display-contents-test {
-    position: absolute;
-    background-color: blue;
-    color: white;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-}
-
-@supports (display: contents) {
-    .no-display-contents-test {
-        display: none;
-    }
 }
