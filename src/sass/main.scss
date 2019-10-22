@@ -63,6 +63,7 @@ h6 {
     }
     // HEADER WRAPPER
     &__header-wrapper {
+        height: 90vh; //set to 90vh because of mobile browser bars (by default it gets full width from grid)
         display: grid;
         grid-template-rows: auto 1fr auto;
         grid-template-columns: 1fr;
@@ -73,7 +74,7 @@ h6 {
 
         @include phone-landscape {
             // has to be after tablet version to overwrite some styles
-            height: inherit;
+            height: 100vh;
         }
 
         @include tablet-bigger {
@@ -142,6 +143,16 @@ h6 {
         text-align: center;
         z-index: 10;
 
+        @include phone-landscape {
+            padding-bottom: calc(
+                20vh + #{$padding-default}
+            ); //special padding because of mobile browser bars
+        }
+
+        @include tablet-bigger {
+            padding-bottom: $padding-default;
+        }
+
         @include desktop {
             grid-row: 2 / 3;
             grid-column: 3;
@@ -197,7 +208,7 @@ h6 {
 
 .heading-main {
     &--element {
-        font-size: 3rem;
+        font-size: 2.5rem;
         display: block;
 
         @include phone-narrow-only {
