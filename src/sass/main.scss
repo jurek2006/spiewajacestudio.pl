@@ -54,6 +54,10 @@ h6 {
             height: 100vh;
         }
 
+        @include tablet-bigger {
+            grid-template-rows: 2fr 1fr;
+        }
+
         @include desktop {
             // second column is for placing slant-bg element (only visual reason)
             grid-template-columns: 1fr $slant-vertical 1fr;
@@ -241,10 +245,24 @@ h6 {
     &--withIcon {
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     &:hover {
         text-decoration: underline;
+    }
+}
+
+.contact__columns-wrapper {
+    // to show contact on tablet-bigger in two columns
+    @include tablet-bigger {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: $padding-default;
+    }
+
+    @include desktop {
+        display: block;
     }
 }
 

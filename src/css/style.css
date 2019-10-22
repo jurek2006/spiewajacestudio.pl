@@ -35,6 +35,9 @@ h6 {
   @media (min-width: 420px) {
     .layout__wrapper {
       height: 100vh; } }
+  @media (min-width: 900px) {
+    .layout__wrapper {
+      grid-template-rows: 2fr 1fr; } }
   @media (min-width: 1199px) {
     .layout__wrapper {
       grid-template-columns: 1fr 20rem 1fr;
@@ -166,9 +169,20 @@ h6 {
     color: #0a0a0aea; }
   .contact__link--withIcon {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    justify-content: center; }
   .contact__link:hover {
     text-decoration: underline; }
+
+@media (min-width: 900px) {
+  .contact__columns-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem; } }
+
+@media (min-width: 1199px) {
+  .contact__columns-wrapper {
+    display: block; } }
 
 .link__icon {
   height: 1.2em;
