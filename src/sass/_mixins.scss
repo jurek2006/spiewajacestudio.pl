@@ -32,12 +32,6 @@
     }
 }
 
-@mixin desktop-bigger-landscape {
-    @media (min-width: 1400px) and (orientation: landscape) {
-        @content;
-    }
-}
-
 @mixin retina4k {
     @media (min-width: 4000px) {
         @content;
