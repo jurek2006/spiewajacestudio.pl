@@ -13,14 +13,19 @@
 
 html {
     font-size: 62.5%;
+
+    @include desktop {
+        font-size: 80%;
+    }
     @include retina4k {
-        font-size: 125%;
+        font-size: 160%;
     }
 }
 
 body {
     box-sizing: border-box;
     font-family: 'Baloo', cursive;
+    background-color: $color-primary;
 }
 
 h1,
@@ -34,194 +39,253 @@ h6 {
     text-align: center;
 }
 
-.desktop-wrapper {
-    @include desktop {
-        height: 100vh;
-        display: flex;
-        justify-content: flex-end;
-    }
+// .layout__wrapper is grid element and also contains .layout__header-wrapper which is also grid element
+// it is needed to make logo, photo and heading together with width 100vh for mobile
+// (where heading and logo need to have size according to their content and photo have to expand to fill left space
+// on desktop screens .layout__header-wrapper vanishes because of display: contents
+// and .layout-wrapper behaves as one grid positioned element
 
-    &__photo-box {
+.layout {
+    &__wrapper {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+
+        @include tablet {
+            height: 100vh;
+        }
+
+        @include tablet-bigger {
+            grid-template-rows: 2fr 1fr;
+        }
+
         @include desktop {
-            height: 100%;
-            width: 100%;
-            background: url(../img/background2300_opt.jpg) no-repeat 40% center;
-            background-size: cover;
-            margin-right: calc(var(--negative-slant-columns-param) / 2);
+            // second column is for placing slant-bg element (only visual reason)
+            grid-template-columns: 1fr $slant-vertical 1fr;
+            // second row is to place properly logo and heading
+            grid-template-rows: min-content auto auto;
         }
     }
-}
+    // HEADER WRAPPER
+    &__header-wrapper {
+        height: 90vh; //set to 90vh because of mobile browser bars (by default it gets full width from grid)
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr;
 
-.tablet-wrapper {
-    @include tablet {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
+        @include tablet {
+            height: auto;
+            grid-template-columns: 1fr 2fr;
+            //it influences __logo-container@tablet slant (in clip path)
+            //if changed from 1fr 2fr has to be changed mentioned clip path
+            //to preserve similar slant to __heading element
+        }
+
+        @include phone-landscape {
+            // has to be after tablet version to overwrite some styles
+            height: 100vh;
+        }
+
+        @include tablet-bigger {
+            height: auto;
+        }
+
+        @include desktop {
+            display: contents;
+        }
     }
 
-    @include desktop {
-        background-color: var(--color-main);
+    &__logo-container {
         clip-path: polygon(
             0 0,
-            100% 0%,
-            100% 100%,
-            var(--slant-columns-param) 100%
-        );
-        margin-left: calc(var(--negative-slant-columns-param) / 2);
-        padding-left: calc(var(--slant-columns-param) / 2);
-        overflow-y: auto;
-    }
-}
-
-.site-header {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-
-    @include tablet {
-        min-height: auto;
-        flex-grow: 1;
-        grid-template-rows: 1fr auto;
-    }
-
-    @include phone-landscape {
-        min-height: 100vh;
-    }
-
-    @include desktop {
-        min-height: auto;
-        grid-template-rows: auto auto;
-        justify-items: center;
-    }
-
-    &__logo {
-        @include tablet {
-            position: absolute;
-            right: 0;
-            width: 45%;
-        }
-        @include desktop {
-            position: static;
-            width: 90%;
-            padding: 5%;
-        }
-
-        & svg path.logo-person {
-            // Color of logo part "Kamili Bakalarczyk" (changes on desktop resolutions)
-            @include desktop {
-                fill: var(--color-second);
-            }
-        }
-    }
-
-    &__photo-box {
-        background: url(../img/background2300_opt.jpg) no-repeat 40% center;
-        background-size: cover;
-
-        height: 100%;
-        clip-path: polygon(
-            0 var(--slant-rows-param),
             100% 0,
-            100% 100%,
-            0% 100%
+            100% calc(100% - #{$slant-horizontal}),
+            0 100%
         );
+        background-color: $color-secondary;
+        padding: $padding-default;
+        margin-bottom: -$slant-horizontal;
 
         @include tablet {
-            clip-path: initial;
+            // in clip path for tablet $slant-horizontal is divided by 3
+            // to keep the slant similar to layout-heading slant
+            // it comes from the fact that in grid this column (1) occupies 1/3 of grid's width
+            // which is defined in __header-wrapper@tablet grid-template-columns
+            clip-path: polygon(
+                0 0,
+                98% 0,
+                100% calc(100% - #{$slant-horizontal} / 3),
+                0 100%
+            );
+            background-color: rgba($color-secondary, 0.95);
+            grid-column-start: 1;
+            grid-row-start: 1;
         }
 
         @include desktop {
-            display: none;
+            grid-column: 1/3;
+            background-color: $color-secondary;
+        }
+    }
+
+    &__logo-image {
+        width: 100%;
+
+        @include desktop {
+            width: 30%;
+        }
+    }
+
+    &__photo {
+        background: url(../img/bg_wood_2300opt.jpg) no-repeat 59% center;
+        background-size: cover;
+        width: 100%;
+        z-index: -10;
+
+        @include tablet {
+            grid-column: 1 / -1;
+            grid-row: 1 / 3;
+            background-position-x: 49%; //changed to move a bit singer's head on photo from logo
+        }
+
+        @include desktop {
+            grid-row: 2 / 4;
+            grid-column: 1 / 3;
+            background-position-x: 59%; //reset from tablets changes
         }
     }
 
     &__heading {
-        margin-top: var(--negative-slant-rows-param);
-        clip-path: polygon(
-            0 var(--slant-rows-param),
-            100% 0,
-            100% 100%,
-            0% 100%
-        );
-        background-color: var(--color-main);
-        font-size: 3rem;
-        padding: var(--padding-default);
-        padding-top: var(--slant-rows-param);
+        margin-top: -$slant-horizontal;
+        clip-path: polygon(0 #{$slant-horizontal}, 100% 0, 100% 100%, 0 100%);
+        background-color: $color-primary;
+        padding: $padding-default;
+        text-align: center;
+        z-index: 10;
+
+        @include tablet {
+            grid-column: 1 / -1;
+        }
 
         @include phone-landscape {
-            font-size: 2rem;
+            padding-bottom: calc(
+                20vh + #{$padding-default}
+            ); //special padding because of mobile browser bars
         }
 
         @include tablet-bigger {
-            font-size: 4rem;
+            padding-bottom: $padding-default;
+        }
+
+        @include desktop {
+            grid-row: 2 / 3;
+            grid-column: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            margin-left: calc(
+                -#{$slant-vertical} / 2
+            ); // improve visual text centering with slant backgrount
+        }
+    }
+
+    // CONTACT
+    &__contact {
+        height: 100vh;
+        z-index: 10;
+
+        padding: $padding-default;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include tablet {
+            height: auto;
+        }
+
+        @include desktop {
+            grid-row: 3;
+            grid-column: 3;
+
+            margin-left: calc(
+                -#{$slant-vertical} / 2
+            ); // improve visual text centering with slant backgrount
+        }
+    }
+
+    // SLANT-BG - element only to be shonw on desktop
+    // - to make shape with slant as a background under right side of layout (heading and contact)
+    &__slant-bg {
+        display: none;
+
+        @include desktop {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, $slant-vertical 100%);
+            display: block;
+            background-color: $color-primary;
+            grid-column: 2 / 4;
+            grid-row: 1 / 4;
         }
     }
 }
 
 .heading-main {
     &--element {
+        font-size: 2.5rem;
         display: block;
 
+        @include phone-narrow-only {
+            font-size: 2rem;
+        }
+
+        @include tablet-bigger {
+            font-size: 3rem;
+        }
+
         &:nth-child(2n) {
-            color: var(--color-second);
+            color: $color-secondary;
         }
     }
 }
 
-.logo-image {
-    width: 100%;
-    padding: var(--padding-default);
-    padding-bottom: 0;
+.contact__link {
+    color: $color-secondary;
+    text-decoration: none;
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+
+    &--bigger {
+        font-size: 2.5rem;
+        padding-bottom: 2rem;
+    }
+
+    &--alt-color {
+        color: $color-tertiary;
+    }
+
+    &--withIcon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
-.contact {
-    background-color: var(--color-main);
-    padding: var(--padding-default);
-
-    height: 100vh;
-    max-height: 70rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @include phone-landscape {
-        min-height: 100%; // fix for issue - element not adjusting its height to children height when has display: flex; (on some older browsers)
-    }
-    @include tablet {
-        height: auto;
+.contact__columns-wrapper {
+    // to show contact on tablet-bigger in two columns
+    @include tablet-bigger {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: $padding-default;
     }
 
     @include desktop {
-        min-height: auto; // needed in fix to make .contact box height adjusted to its children, not bigger
-    }
-
-    &__link {
-        color: var(--color-second);
-        text-decoration: none;
         display: block;
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 1rem;
-
-        &--bigger {
-            font-size: 2.5rem;
-            flex-grow: 1;
-        }
-
-        &--alt-color {
-            color: var(--color-third);
-        }
-
-        &--withIcon {
-            display: flex;
-            align-items: center;
-        }
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 }
 
@@ -234,4 +298,22 @@ h6 {
     position: absolute;
     opacity: 0;
     pointer-events: none;
+}
+
+// REMOVE - only for testing:
+// show blue screen on browsers which doesn't handle display: contents
+.no-display-contents-test {
+    position: absolute;
+    background-color: blue;
+    color: white;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+}
+
+@supports (display: contents) {
+    .no-display-contents-test {
+        display: none;
+    }
 }
