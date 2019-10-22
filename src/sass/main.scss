@@ -45,6 +45,9 @@ h6 {
 // on desktop screens .layout__header-wrapper vanishes because of display: contents
 // and .layout-wrapper behaves as one grid positioned element
 
+// mixin desktop applies styles only if browser supports display: contents (defined in mixin)
+// if not - for desktop resolution are used styles for @tablet-bigger
+
 .layout {
     &__wrapper {
         display: grid;
