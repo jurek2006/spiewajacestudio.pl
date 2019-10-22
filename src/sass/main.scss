@@ -74,6 +74,10 @@ h6 {
 
         @include tablet {
             height: auto;
+            grid-template-columns: 1fr 2fr;
+            //it influences __logo-container@tablet slant (in clip path)
+            //if changed from 1fr 2fr has to be changed mentioned clip path
+            //to preserve similar slant to __heading element
         }
 
         @include phone-landscape {
@@ -102,7 +106,17 @@ h6 {
         margin-bottom: -$slant-horizontal;
 
         @include tablet {
-            background-color: transparent;
+            // in clip path for tablet $slant-horizontal is divided by 3
+            // to keep the slant similar to layout-heading slant
+            // it comes from the fact that in grid this column (1) occupies 1/3 of grid's width
+            // which is defined in __header-wrapper@tablet grid-template-columns
+            clip-path: polygon(
+                0 0,
+                98% 0,
+                100% calc(100% - #{$slant-horizontal} / 3),
+                0 100%
+            );
+            background-color: rgba($color-secondary, 0.95);
             grid-column-start: 1;
             grid-row-start: 1;
         }
@@ -116,7 +130,7 @@ h6 {
     &__logo-image {
         width: 100%;
 
-        @include tablet {
+        @include desktop {
             width: 30%;
         }
     }
@@ -128,14 +142,15 @@ h6 {
         z-index: -10;
 
         @include tablet {
-            grid-column-start: 1;
-            grid-row-start: 1;
-            grid-row-end: 3;
+            grid-column: 1 / -1;
+            grid-row: 1 / 3;
+            background-position-x: 49%; //changed to move a bit singer's head on photo from logo
         }
 
         @include desktop {
             grid-row: 2 / 4;
             grid-column: 1 / 3;
+            background-position-x: 59%; //reset from tablets changes
         }
     }
 
@@ -146,6 +161,10 @@ h6 {
         padding: $padding-default;
         text-align: center;
         z-index: 10;
+
+        @include tablet {
+            grid-column: 1 / -1;
+        }
 
         @include phone-landscape {
             padding-bottom: calc(
@@ -220,7 +239,7 @@ h6 {
         }
 
         @include tablet-bigger {
-            font-size: 4rem;
+            font-size: 3rem;
         }
 
         &:nth-child(2n) {
