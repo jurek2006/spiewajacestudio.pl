@@ -116,9 +116,10 @@ h6 {
   @media (min-width: 420px) {
     .layout__heading {
       grid-column: 1 / -1; } }
-  @media (min-width: 420px) and (orientation: landscape) {
-    .layout__heading {
-      padding-bottom: calc( 20vh + 2rem); } }
+
+@media (min-width: 420px) and (orientation: landscape) and (min-aspect-ratio: 7 / 4) {
+  .layout__heading {
+    padding-bottom: calc(20vh + 2rem); } }
   @media (min-width: 900px) {
     .layout__heading {
       padding-bottom: 2rem; } }
