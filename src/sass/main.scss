@@ -170,9 +170,12 @@ h6 {
         }
 
         @include phone-landscape {
-            padding-bottom: calc(
-                20vh + #{$padding-default}
-            ); //special padding because of mobile browser bars
+            // add special padding because of mobile browser bars - to fit on the screen the heading
+            // use of additional query with aspect ratio is experimental
+            // - assuming that screens with aspect ratio below are not mobile (so we don't need the gap we added for mobile)
+            @media (min-aspect-ratio: 7/4) {
+                padding-bottom: calc(20vh + #{$padding-default});
+            }
         }
 
         @include tablet-bigger {
