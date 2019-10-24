@@ -15,8 +15,9 @@
         "build:clean": "rimraf docs",
         "build:mkdirs": "mkdir -p docs/css && mkdir -p docs/img",
         "build:copy:assets": "cp -r src/img/* docs/img",
+        "build:copy:favicon": "cp -r src/favicon/* docs",
         "build:copy:html": "find src -name '*.html' -type f -exec cp {} docs \\;",
-        "build": "npm run build:clean && npm run build:mkdirs && npm run build:copy:assets && npm run build:copy:html && npm run build:css"
+        "build": "npm run build:clean && npm run build:mkdirs && npm run build:copy:assets && npm run build:copy:favicon && npm run build:copy:html && npm run build:css"
     },
     "repository": {
         "type": "git",
