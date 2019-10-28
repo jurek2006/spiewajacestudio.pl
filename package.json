@@ -13,9 +13,9 @@
         "compress:css": "node-sass src/css/style.prefix.css docs/css/style.css --output-style compressed",
         "build:css": "npm-run-all compile:sass concat:css prefix:css compress:css",
         "build:clean": "rimraf docs",
-        "build:mkdirs": "mkdir -p docs/css && mkdir -p docs/img",
+        "build:mkdirs": "mkdir -p docs/css && mkdir -p docs/img && mkdir -p docs/favicon",
         "build:copy:assets": "cp -r src/img/* docs/img",
-        "build:copy:favicon": "cp -r src/favicon/* docs",
+        "build:copy:favicon": "cp -r src/favicon/* docs/favicon",
         "build:copy:html": "find src -name '*.html' -type f -exec cp {} docs \\;",
         "build": "npm run build:clean && npm run build:mkdirs && npm run build:copy:assets && npm run build:copy:favicon && npm run build:copy:html && npm run build:css"
     },
