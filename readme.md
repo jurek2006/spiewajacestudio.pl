@@ -149,3 +149,9 @@ To provide Google Analytics Tag - just store it in (as you copy it from GA) **de
 Automatically it will be added only in the production deployment version (built with `npm run deployment`).
 
 (You should also define "placeholder" for development and build versions in **src/only_deploy_html_partials/\_googleAnalytics.html**)
+
+## .htaccess and other files for development
+
+To provide any files we want to include in deployment's version root folder - we store these files in **deploy/deploy_helpers/only_deploy_other**. The files will be copied automatically.
+
+Now it is used for .htaccess
