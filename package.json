@@ -12,7 +12,7 @@
     "scripts": {
         "start": "npm run live:pre && npm run live:sass && npm run live:sass:watch | npm run live:html:watch | live-server $npm_package_config_liveFolder/",
         "build": "npm run build:pre && npm run build:html && npm run build:css",
-        "deploy": "npm run deploy:pre && npm run deploy:html && npm run deploy:css && npm run deploy:assets && npm run deploy:favicon",
+        "deploy": "npm run deploy:pre && npm run deploy:html && npm run deploy:css && npm run deploy:assets && npm run deploy:favicon && npm run deploy:copy:only_deploy_other",
         "live:pre": "npm run live:pre:version && npm run live:pre:mkdirs && npm run live:pre:copy-assets && npm run live:pre:copy-favicon",
         "live:pre:version": "echo Development session started $(date +\"%Y-%m-%d_%H:%M.%3N\") > src/_auto-version.html",
         "live:pre:mkdirs": "mkdir -p $npm_package_config_liveFolder/css && mkdir -p $npm_package_config_liveFolder/img && mkdir -p $npm_package_config_liveFolder/favicon",
@@ -54,7 +54,8 @@
         "deploy:assets:copy": "cp -r src/img/* $npm_package_config_deployOutputFolder/img",
         "deploy:favicon": "npm run deploy:favicon:mkdirs && npm run deploy:favicon:copy",
         "deploy:favicon:mkdirs": "mkdir -p $npm_package_config_deployOutputFolder/favicon",
-        "deploy:favicon:copy": "cp -r src/favicon/* $npm_package_config_deployOutputFolder/favicon"
+        "deploy:favicon:copy": "cp -r src/favicon/* $npm_package_config_deployOutputFolder/favicon",
+        "deploy:copy:only_deploy_other": "cp -r $npm_package_config_deployWorkingFolder/deploy_helpers/only_deploy_other/. $npm_package_config_deployOutputFolder"
     },
     "repository": {
         "type": "git",

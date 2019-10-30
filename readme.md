@@ -92,6 +92,7 @@ It bundles html and css from scss, runs watching changes for both and starts liv
     Builds deploy version - ready to be uploaded on production server.
     It adds special html partials prepared only for deployment version (from deploy/deploy_helpers/only_deploy_html_partials/ if not changed in folders' configuration ).
     Currently used for adding Google Analytics Tag only in the production version.
+    Copies also all files from deploy/deploy_helpers/only_deploy_other to the root of the deployment output folder (used for .htaccess)
 
 -   "deploy": **builds deploy version**
     -   "deploy:pre": **does the following:**
@@ -109,12 +110,13 @@ It bundles html and css from scss, runs watching changes for both and starts liv
         -   "deploy:css:concat-css": **concatenates css files (at the moment not in use)**
         -   "deploy:css:autoprefix": **adds autoprefixes**
         -   "deploy:css:compress-css": **compresses css and finally stores the result in the deployment output folder**
-    -   "deploy:assets": **makes copy of assets (img/) from src to the deployment outpur file, following:**
+    -   "deploy:assets": **makes copy of assets (img/) from src to the deployment output folder, following:**
         -   "deploy:assets:mkdirs": **creates folder for assets**
         -   "deploy:assets:copy": **copies the whole content of src/img/ to img/**
-    -   "deploy:favicon": **makes copy of favicon folder from src to the deployment outpur file, following:**
+    -   "deploy:favicon": **makes copy of favicon folder from src to the deployment output folder, following:**
         -   "deploy:favicon:mkdirs": **creates folder**
         -   "deploy:favicon:copy": **copies favicon content**
+    -   "deploy:copy:only_deploy_other": **copies all files from deploy/deploy_helpers/only_deploy_other to the root of the deployment output folder (used for .htaccess)**
 
 ## Use html partials
 
