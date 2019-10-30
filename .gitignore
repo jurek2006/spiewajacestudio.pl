@@ -1,2 +1,4 @@
 /node_modules
 /src/css/*.*
+live/
+src/_auto-version.html
