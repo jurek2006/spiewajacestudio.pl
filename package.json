@@ -23,7 +23,7 @@
         "live:html:watch": "html-includes --src src --dest $npm_package_config_liveFolder --watch",
         "live:prefix": "postcss --use autoprefixer -b 'last 10 versions' $npm_package_config_liveFolder/css/style.css -o $npm_package_config_liveFolder/css/style.css",
         "build:pre": "npm run build:pre:version && npm run build:pre:clean && npm run build:pre:mkdirs && npm run build:pre:copy-assets && npm run build:pre:copy-favicon",
-        "build:pre:version": "echo Build $(date +\"%Y-%m-%d_%H:%M.%3N\") > src/_auto-version.html",
+        "build:pre:version": "echo Build for testing/preview $(date +\"%Y-%m-%d_%H:%M.%3N\") > src/_auto-version.html",
         "build:pre:clean": "rimraf $npm_package_config_buildFolder",
         "build:pre:mkdirs": "mkdir -p $npm_package_config_buildFolder/css && mkdir -p $npm_package_config_buildFolder/img && mkdir -p $npm_package_config_buildFolder/favicon",
         "build:pre:copy-assets": "cp -r src/img/* $npm_package_config_buildFolder/img",
